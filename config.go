@@ -2,7 +2,6 @@ package config
 
 import (
 	"bufio"
-	"fmt"
 	"io"
 	"os"
 	"strings"
@@ -66,7 +65,6 @@ func (conf *Config) Get(fld ...string) interface{} {
 	case 1:
 		sf := strings.SplitN(fld[0], ".", 2)
 		if len(sf) == 1 {
-			fmt.Println(fld[0], conf.Conf[fld[0]])
 			return conf.Conf[fld[0]]
 		} else if len(sf) == 2 {
 			if conf.Conf[sf[0]] == nil {
@@ -86,7 +84,6 @@ func (conf *Config) Get(fld ...string) interface{} {
 func (conf *Config) Escape(file string) {
 	fi, err := os.Open(file)
 	if err != nil {
-		fmt.Printf("Error: %s\n", err)
 		return
 	}
 	defer fi.Close()
