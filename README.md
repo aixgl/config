@@ -24,7 +24,7 @@ config like php.ini
      m = a
 ```
 
-## 例子example
+# 例子example
 
 ```
 package main
@@ -32,19 +32,15 @@ package main
 import (
   "fmt"
   "github.com/aixgl/config"
-  "os"
 )
 
 func main() {
 
-  //Get absolute file path
-  filepath, _ := os.Getwd()
-  filepath += "/config.env"
   //设置并解析  第一个参数可以任意设置，获取的时候要用设置的配置文件别名；支持多个配置文件的解析
-  conf := config.C("G", filepath)
+  conf := config.C("G", "config.env")
   confE := config.C()
-  fmt.Println(confE.Get(), filepath)
-  fmt.Println(conf.GetAll(), filepath)
+  fmt.Println(confE.Get())
+  fmt.Println(conf.GetAll())
 
   //根据配置文件键值获取
   fmt.Println(confE.Get())

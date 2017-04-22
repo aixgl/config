@@ -45,6 +45,11 @@ func (conf *Config) Set(file ...string) *Config {
 		if err != nil {
 			return conf
 		}
+
+		if file[0][:1] == "." || file[0][:1] != "/" {
+			filepath, _ := os.Getwd()
+			file[0] = filepath + "/" + file[0]
+		}
 		conf.File = file[0]
 		confFile = file[0]
 	}

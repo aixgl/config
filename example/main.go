@@ -3,18 +3,15 @@ package main
 import (
 	"fmt"
 	"github.com/aixgl/config"
-	"os"
 )
 
 func main() {
 
 	//Get absolute file path
-	filepath, _ := os.Getwd()
-	filepath += "/config.env"
-	conf := config.C("G", filepath)
+	conf := config.C("G", "config.env")
 	confE := config.C()
-	fmt.Println(confE.Get(), filepath)
-	fmt.Println(conf.GetAll(), filepath)
+	fmt.Println(confE.Get())
+	fmt.Println(conf.GetAll())
 
 	fmt.Println(confE.Get())
 	debuglog, _ := confE.Get("DEBUG.log").(string)
